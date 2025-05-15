@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3B82F6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2563EB;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease;
+}
+
+/* Custom focus styles */
+button:focus, a:focus, input:focus, textarea:focus {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+.dark img {
+    filter: brightness(0.9);
+}
+
+/* Print styles */
+@media print {
+    nav, footer {
+        display: none !important;
+    }
+    
+    body {
+        padding: 0;
+        margin: 0;
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+
+    .dark img:not(.dark-mode-ignore) {
+        filter: brightness(0.85) contrast(1.1);
+    }
+
+}
