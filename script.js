@@ -1,23 +1,24 @@
-// Dark Mode Toggle Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
+    const html = document.documentElement;
     const darkModeIcon = document.getElementById('darkModeIcon');
-    
-    // Check for saved preference or system preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedMode = localStorage.getItem('darkMode');
-    
-    if (savedMode === 'dark' || (savedMode === null && prefersDark)) {
-        document.documentElement.classList.add('dark');
-        darkModeIcon.textContent = '☀️';
-    }
-    
-    // Toggle dark mode
+    const mainContent = document.querySelector('main'); // Add this line
+
     darkModeToggle.addEventListener('click', function() {
-        document.documentElement.classList.toggle('dark');
-        const isDark = document.documentElement.classList.contains('dark');
+        html.classList.toggle('dark');
         
-        darkModeIcon.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('darkMode', isDark ? 'dark' : 'light');
+        // Update the icon
+        darkModeIcon.textContent = html.classList.contains('dark') ? '☀️' : '🌙';
+        
+        // DOM manipulation examples
+        if (html.classList.contains('dark')) {
+            mainContent.style.transition = 'all 0.3s';
+            mainContent.style.transform = 'scale(1.02)';
+        } else {
+            mainContent.style.transform = 'scale(1)';
+        }
+        
+        // You can also add/remove classes
+        document.body.classList.toggle('dark-mode-active');
     });
 });
